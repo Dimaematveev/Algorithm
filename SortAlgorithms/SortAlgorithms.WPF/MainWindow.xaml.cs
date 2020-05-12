@@ -21,10 +21,16 @@ namespace SortAlgorithms.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        AlgorithmsBase<int> algorithm = new AlgorithmsBase<int>();
+        private readonly AlgorithmsBase<int> algorithm = new CocktailSort<int>();
         public MainWindow()
         {
             InitializeComponent();
+            algorithm.ItemsEdit += Algorithm_ItemsEdit;
+        }
+
+        private void Algorithm_ItemsEdit()
+        {
+            textbox3.Text += "\n" + MassToString(algorithm.Items);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -34,18 +40,24 @@ namespace SortAlgorithms.WPF
                 algorithm.Items.Add(value);
                 label1.Content += " " + value.ToString();
             }
-            
-
         }
 
         private void Button_Click1(object sender, RoutedEventArgs e)
         {
+            
+            textbox3.Text += "\n" + MassToString(algorithm.Items);
             algorithm.Sort();
+            label2.Content += MassToString(algorithm.Items);
+        }
 
-            foreach (var item in algorithm.Items)
+        private string MassToString(List<int> list, char separator =' ')
+        {
+            string ret = "";
+            foreach (var item in list)
             {
-                label2.Content += " " + item.ToString();
+                ret += $"{item }{separator}";
             }
+            return ret;
         }
     }
 }
