@@ -94,5 +94,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SortAlgorithms.BL\SortAlgorithms.BL.csproj">
+      <Project>{b7c4a0d7-43a9-4026-ae10-547aa4075e68}</Project>
+      <Name>SortAlgorithms.BL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

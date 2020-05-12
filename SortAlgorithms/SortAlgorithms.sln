@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortAlgorithms.WPF", "SortA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortAlgorithms.BL", "SortAlgorithms.BL\SortAlgorithms.BL.csproj", "{B7C4A0D7-43A9-4026-AE10-547AA4075E68}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortAlgorithms.BLTests", "SortAlgorithms.BLTests\SortAlgorithms.BLTests.csproj", "{AA99D515-17C9-4C18-856E-329AE815ECFB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B7C4A0D7-43A9-4026-AE10-547AA4075E68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7C4A0D7-43A9-4026-AE10-547AA4075E68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7C4A0D7-43A9-4026-AE10-547AA4075E68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA99D515-17C9-4C18-856E-329AE815ECFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA99D515-17C9-4C18-856E-329AE815ECFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA99D515-17C9-4C18-856E-329AE815ECFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA99D515-17C9-4C18-856E-329AE815ECFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
