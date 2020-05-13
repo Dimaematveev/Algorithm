@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,12 +23,69 @@ namespace SortAlgorithms.WPF
     public partial class MainWindow : Window
     {
         List<SortedItem> items = new List<SortedItem>();
+        BubbleSort<int> BubbleSort = new BubbleSort<int>();
+        int sleep = 500;
         public MainWindow()
         {
             InitializeComponent();
             AddButon.Click += AddButon_Click;
             FillButton.Click += Fill_Click;
-            //algorithm.ItemsEdit += Algorithm_ItemsEdit;
+
+            BubbleSort.ItemsEdit += Algorithm_ItemsEdit;
+            Sort.Click += (x, y) => {Task.Run(() => Sort_Click());};
+
+            Time.ValueChanged += Time_ValueChanged;
+        }
+
+        private void Time_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            sleep = (int)Time.Value;
+        }
+
+        private void Sort_Click()
+        {
+            BubbleSort.Items = items.Select(x => x.Value).ToList();
+            BubbleSort.Sort();
+            
+        }
+
+        private void Algorithm_ItemsEdit(int posA, int posB, bool? isEdit)
+        {
+
+            Dispatcher.Invoke((Action)delegate { 
+                ProgressBars.Children.Clear();
+                var color = Brushes.Blue;
+                if (isEdit == true)
+                {
+                    var temp = items[posA];
+                    items[posA] = items[posB];
+                    items[posB] = temp;
+                    color = Brushes.Red;
+                }
+                else if (isEdit == false)
+                {
+                    color = Brushes.Green;
+                }
+                
+                for (int i = 0; i < items.Count; i++)
+                {
+                    if (i == posA || i == posB)
+                    {
+                        items[i].ProgressBar.Foreground = color;
+                    }
+                    else
+                    {
+                        items[i].ProgressBar.Foreground = Brushes.Yellow;
+                    }
+                    ProgressBars.Children.Add(items[i].Grid);
+                }
+
+                this.UpdateLayout();
+                
+            });
+            Thread.Sleep(sleep);
+
+
         }
 
         private void Fill_Click(object sender, RoutedEventArgs e)

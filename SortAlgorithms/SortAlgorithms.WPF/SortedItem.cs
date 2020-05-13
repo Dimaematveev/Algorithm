@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace SortAlgorithms.WPF
 {
@@ -25,6 +26,7 @@ namespace SortAlgorithms.WPF
             ProgressBar.Minimum = 0;
             ProgressBar.Maximum = 100;
             ProgressBar.Value = Value;
+            ProgressBar.Foreground = Brushes.Yellow;
 
             Label = new Label();
             Label.Content = Value.ToString();

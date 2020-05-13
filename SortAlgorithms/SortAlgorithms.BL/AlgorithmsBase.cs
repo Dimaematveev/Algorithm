@@ -9,19 +9,18 @@ namespace SortAlgorithms.BL
         public int SwopCount { get; protected set; } = 0;
         public int ComparisonCount { get; protected set; } = 0;
 
-        public event Action ItemsEdit;
+        public virtual event Action<int,int, bool?> ItemsEdit;
         public List<T> Items { get; set; } = new List<T>();
 
         protected void Swop(int positionA,int positionB)
         {
             if (positionA < Items.Count && positionB < Items.Count)
             {
-                
                 var temp = Items[positionA];
                 Items[positionA] = Items[positionB];
                 Items[positionB] = temp;
 
-                ItemsEdit?.Invoke();
+
                 SwopCount++;
             }
         }

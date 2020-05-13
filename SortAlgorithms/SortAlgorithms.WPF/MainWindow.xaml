@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid Margin="0">
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Left"  VerticalAlignment="Top"  Height="100" Width="300" >
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Left"  VerticalAlignment="Top"  Height="120" Width="300" >
             <Grid Height="50">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -34,10 +34,14 @@
                 <TextBox x:Name="FillTextBox" Grid.Column="0" Grid.Row="1"/>
                 <Button x:Name="FillButton" Content="Заполнить" Grid.Column="1" Grid.Row="1"/>
             </Grid>
+            <Button x:Name="Sort" Content="Сортировать"/>
         </StackPanel>
-        <Grid  Height="100" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="300,0,0,0">
+        <Grid  Height="120" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="300,0,0,0">
             <StackPanel Orientation="Horizontal" Margin="10" x:Name="ProgressBars" />
 
         </Grid>
+        <Slider x:Name="Time" Value="500" HorizontalAlignment="Left" Margin="300,125,0,0" VerticalAlignment="Top" Width="379" Minimum="0" Maximum="10000"/>
+
+
     </Grid>
 </Window>
