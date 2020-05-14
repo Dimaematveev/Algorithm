@@ -23,7 +23,7 @@ namespace SortAlgorithms.WPF
     public partial class MainWindow : Window
     {
         List<SortedItem> items = new List<SortedItem>();
-        BubbleSort<int> BubbleSort = new BubbleSort<int>();
+        AlgorithmsBase<int> Sortes;
         int sleep = 500;
         public MainWindow()
         {
@@ -31,10 +31,22 @@ namespace SortAlgorithms.WPF
             AddButon.Click += AddButon_Click;
             FillButton.Click += Fill_Click;
 
-            BubbleSort.ItemsEdit += Algorithm_ItemsEdit;
-            Sort.Click += (x, y) => {Task.Run(() => Sort_Click());};
+
+            //Sort.Click += (x, y) => {Task.Run(() => Sort_Click());};
+
+            BubbleSort.Click += (s, e) => { FillAndSort_Click<BubbleSort<int>>(); };
+            CocktailSort.Click += (s, e) => { FillAndSort_Click<CocktailSort<int>>(); };
+
 
             Time.ValueChanged += Time_ValueChanged;
+        }
+
+        private void FillAndSort_Click<T>() where T: AlgorithmsBase<int>,new()
+        {
+            Sortes = new T();
+            Sortes.ItemsEdit += Algorithm_ItemsEdit;
+            Sortes.Items = items.Select(x => x.Value).ToList();
+            Task.Run(() => Sort_Click());
         }
 
         private void Time_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -44,8 +56,7 @@ namespace SortAlgorithms.WPF
 
         private void Sort_Click()
         {
-            BubbleSort.Items = items.Select(x => x.Value).ToList();
-            BubbleSort.Sort();
+            Sortes.Sort();
             
         }
 
@@ -66,7 +77,9 @@ namespace SortAlgorithms.WPF
                 {
                     color = Brushes.Green;
                 }
-                
+                var cc = ScrollProgress.ViewportWidth;
+                double offset = ScrollProgress.ExtentWidth * posA / items.Count - cc/2;
+                ScrollProgress.ScrollToHorizontalOffset(offset);
                 for (int i = 0; i < items.Count; i++)
                 {
                     if (i == posA || i == posB)
