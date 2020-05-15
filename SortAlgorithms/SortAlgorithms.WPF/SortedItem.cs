@@ -11,7 +11,7 @@ namespace SortAlgorithms.WPF
 {
     public class SortedItem
     {
-        double Width = 30;
+        readonly double Width = 30;
         public ProgressBar ProgressBar { get; private set; }
         public Label Label { get; private set; }
 
@@ -22,16 +22,20 @@ namespace SortAlgorithms.WPF
         public SortedItem(int value)
         {
             Value = value;
-            ProgressBar = new ProgressBar();
-            ProgressBar.Orientation = Orientation.Vertical;
-            ProgressBar.Minimum = -10;
-            ProgressBar.Maximum = 100;
-            ProgressBar.Value = Value;
-            ProgressBar.Foreground = Brushes.Yellow;
+            ProgressBar = new ProgressBar
+            {
+                Orientation = Orientation.Vertical,
+                Minimum = -10,
+                Maximum = 100,
+                Value = Value,
+                Foreground = Brushes.Yellow
+            };
 
-            Label = new Label();
-            Label.Content = Value.ToString();
-            
+            Label = new Label
+            {
+                Content = Value.ToString()
+            };
+
 
             Grid = new Grid();
             Grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1,GridUnitType.Star) });

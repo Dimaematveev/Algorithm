@@ -22,7 +22,7 @@ namespace SortAlgorithms.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<SortedItem> items = new List<SortedItem>();
+        readonly List<SortedItem> items = new List<SortedItem>();
         AlgorithmsBase<int> Sortes;
         int sleep = 500;
         public MainWindow()
@@ -36,6 +36,7 @@ namespace SortAlgorithms.WPF
 
             BubbleSort.Click += (s, e) => { FillAndSort_Click<BubbleSort<int>>(); };
             CocktailSort.Click += (s, e) => { FillAndSort_Click<CocktailSort<int>>(); };
+            BozoSort.Click += (s, e) => { FillAndSort_Click<BozoSort<int>>(); };
 
 
             Time.ValueChanged += Time_ValueChanged;
@@ -62,42 +63,44 @@ namespace SortAlgorithms.WPF
 
         private void Algorithm_ItemsEdit(int posA, int posB, bool? isEdit)
         {
-
-            Dispatcher.Invoke((Action)delegate { 
-                ProgressBars.Children.Clear();
+            {
+                int temp = Math.Min(posA, posB);
+                posB = Math.Max(posA, posB);
+                posA = temp;
+            }
+            Dispatcher.Invoke((Action)delegate {
+                var cc = ScrollProgress.ViewportWidth;
+                double offset = ScrollProgress.ExtentWidth * posA / items.Count - cc / 2;
+                ScrollProgress.ScrollToHorizontalOffset(offset);
                 var color = Brushes.Blue;
                 if (isEdit == true)
                 {
-                    var temp = items[posA];
+                    var temp1 = items[posA];
                     items[posA] = items[posB];
-                    items[posB] = temp;
+                    items[posB] = temp1;
+
+                    ProgressBars.Children.RemoveAt(posB);
+                    ProgressBars.Children.RemoveAt(posA);
+                    ProgressBars.Children.Insert(posA, items[posA].Grid);
+                    ProgressBars.Children.Insert(posB, items[posB].Grid);
+
                     color = Brushes.Red;
                 }
                 else if (isEdit == false)
                 {
                     color = Brushes.Green;
                 }
-                var cc = ScrollProgress.ViewportWidth;
-                double offset = ScrollProgress.ExtentWidth * posA / items.Count - cc/2;
-                ScrollProgress.ScrollToHorizontalOffset(offset);
-                for (int i = 0; i < items.Count; i++)
-                {
-                    if (i == posA || i == posB)
-                    {
-                        items[i].ProgressBar.Foreground = color;
-                    }
-                    else
-                    {
-                        items[i].ProgressBar.Foreground = Brushes.Yellow;
-                    }
-                    ProgressBars.Children.Add(items[i].Grid);
-                }
 
-                this.UpdateLayout();
-                
+                items[posA].ProgressBar.Foreground = color;
+                items[posB].ProgressBar.Foreground = color;
             });
             Thread.Sleep(sleep);
-
+            Dispatcher.Invoke((Action)delegate
+            {
+                var color = Brushes.Yellow;
+                items[posA].ProgressBar.Foreground = color;
+                items[posB].ProgressBar.Foreground = color;
+            });
 
         }
 
@@ -126,44 +129,6 @@ namespace SortAlgorithms.WPF
                 ProgressBars.Children.Add(item.Grid);
             }
             AddTextBox.Text = "";
-        }
-
-
-
-
-
-        //private void Algorithm_ItemsEdit()
-        //{
-        //    textbox3.Text += "\n" + MassToString(algorithm.Items);
-        //}
-
-        //private void Button_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if (int.TryParse(texbox1.Text, out int value))
-        //    {
-        //        algorithm.Items.Add(value);
-        //        label1.Content += " " + value.ToString();
-        //    }
-        //}
-
-        //private void Button_Click1(object sender, RoutedEventArgs e)
-        //{
-            
-        //    textbox3.Text += "\n" + MassToString(algorithm.Items);
-        //    algorithm.Sort();
-        //    label2.Content += MassToString(algorithm.Items);
-        //}
-
-
-
-        private string MassToString(List<int> list, char separator =' ')
-        {
-            string ret = "";
-            foreach (var item in list)
-            {
-                ret += $"{item }{separator}";
-            }
-            return ret;
         }
     }
 }

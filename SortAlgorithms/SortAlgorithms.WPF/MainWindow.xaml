@@ -38,7 +38,8 @@
                 <Button.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="Пузырьковая сортировка" Name="BubbleSort"/>
-                        <MenuItem Header="Cocktail сортировка"  Name="CocktailSort"/>
+                        <MenuItem Header="Шейкерная сортировка"  Name="CocktailSort"/>
+                        <MenuItem Header="Сортировка клоуна Бозо"  Name="BozoSort"/>
                     </ContextMenu>
                 </Button.ContextMenu>
             </Button>
