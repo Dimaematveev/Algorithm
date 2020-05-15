@@ -8,7 +8,7 @@ namespace SortAlgorithms.BL
 {
     public class BozoSort<T> : AlgorithmsBase<T> where T : IComparable
     {
-        private Random rnd = new Random();
+        private readonly Random rnd = new Random();
         public override event Action<int, int, bool?> ItemsEdit;
         protected override void MakeSort()
         {
@@ -16,7 +16,7 @@ namespace SortAlgorithms.BL
             while (!isEnd)
             {
                 int posA = rnd.Next(0, Items.Count);
-                int posB = -1;
+                int posB;
                 do
                 {
                     posB = rnd.Next(0, Items.Count);

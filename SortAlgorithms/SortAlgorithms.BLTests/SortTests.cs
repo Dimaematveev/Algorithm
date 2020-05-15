@@ -11,9 +11,9 @@ namespace SortAlgorithms.BL.Tests
     [TestClass()]
     public class SortTests
     {
-        Random rnd = new Random();
-        List<int> Items = new List<int>();
-        List<int> Sorted = new List<int>();
+        readonly Random rnd = new Random();
+        readonly List<int> Items = new List<int>();
+        readonly List<int> Sorted = new List<int>();
 
         [TestInitialize]
         public void Init()

@@ -45,12 +45,17 @@
                 </Button.ContextMenu>
             </Button>
         </StackPanel>
-        <DockPanel  Height="120" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="300,0,0,0">
+        <Grid  Height="120" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="300,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
             <ScrollViewer x:Name="ScrollProgress" CanContentScroll="True" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden">
                 <StackPanel Orientation="Horizontal" Margin="10" x:Name="ProgressBars" />
             </ScrollViewer>
-        </DockPanel>
-        <Slider x:Name="Time" Value="500" HorizontalAlignment="Left" Margin="300,125,0,0" VerticalAlignment="Top" Width="379" Minimum="100" Maximum="5000"/>
+            <Slider MinWidth="100" Grid.Row="1" x:Name="Time" Value="0"  Minimum="-10" Maximum="10"/>
+        </Grid>
+        
         
 
 

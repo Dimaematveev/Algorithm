@@ -24,7 +24,7 @@ namespace SortAlgorithms.WPF
     {
         readonly List<SortedItem> items = new List<SortedItem>();
         AlgorithmsBase<int> Sortes;
-        int sleep = 500;
+        int sleep = 0;
         public MainWindow()
         {
             InitializeComponent();
@@ -53,7 +53,7 @@ namespace SortAlgorithms.WPF
 
         private void Time_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            sleep = (int)Time.Value;
+            sleep =  (int)Time.Value;
         }
 
         private void Sort_Click()
@@ -95,7 +95,7 @@ namespace SortAlgorithms.WPF
                 items[posA].ProgressBar.Foreground = color;
                 items[posB].ProgressBar.Foreground = color;
             });
-            Thread.Sleep(sleep);
+            Thread.Sleep((int)(Math.Pow(2,sleep)* 1000));
             Dispatcher.Invoke((Action)delegate
             {
                 var color = Brushes.Yellow;
