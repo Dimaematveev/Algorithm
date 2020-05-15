@@ -37,6 +37,7 @@ namespace SortAlgorithms.WPF
             BubbleSort.Click += (s, e) => { FillAndSort_Click<BubbleSort<int>>(); };
             CocktailSort.Click += (s, e) => { FillAndSort_Click<CocktailSort<int>>(); };
             BozoSort.Click += (s, e) => { FillAndSort_Click<BozoSort<int>>(); };
+            InsertionSort.Click += (s, e) => { FillAndSort_Click<InsertionSort<int>>(); };
 
 
             Time.ValueChanged += Time_ValueChanged;

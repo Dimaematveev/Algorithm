@@ -40,6 +40,7 @@
                         <MenuItem Header="Пузырьковая сортировка" Name="BubbleSort"/>
                         <MenuItem Header="Шейкерная сортировка"  Name="CocktailSort"/>
                         <MenuItem Header="Сортировка клоуна Бозо"  Name="BozoSort"/>
+                        <MenuItem Header="Сортировка вставками"  Name="InsertionSort"/>
                     </ContextMenu>
                 </Button.ContextMenu>
             </Button>
