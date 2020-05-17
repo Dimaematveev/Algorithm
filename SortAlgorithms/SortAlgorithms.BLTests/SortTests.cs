@@ -21,7 +21,7 @@ namespace SortAlgorithms.BL.Tests
             Items.Clear();
             Sorted.Clear();
         }
-        public T FillMass<T>(int number) where T : AlgorithmsBase<int>, new()
+        public T FillMass<T>(int number) where T : AlgorithmBase<int>, new()
         { 
             int[] count = new int[] { 3, 10, 1000, 1084, 10000 };
             int[] minrand = new int[] { 0, 0, 0, 0, 100 };
@@ -102,35 +102,47 @@ namespace SortAlgorithms.BL.Tests
             }
         }
 
+        [TestMethod]
+        [DataTestMethod]
+        [DataRow(0)]
+        [DataRow(1)]
+        [DataRow(2)]
+        [DataRow(3)]
+        [DataRow(4)]
+        public void ShellTest(int number)
+        {
+            //Arrange
+            var sort = FillMass<ShellSort<int>>(number);
+            //ACT
+            sort.Sort();
 
-        //[TestMethod]
-        //[DataTestMethod]
-        //[DataRow(3, 0, 2)]
-        //[DataRow(10, 0, 100)]
-        //[DataRow(1000, 0, 100000)]
-        //[DataRow(1084, 0, 10)]
-        //[DataRow(10000, 100, 10000)]
-        //public void BozoTest(int count, int minrand, int maxrand)
-        //{
-        //    //Arrange
-        //    for (int i = 0; i < count; i++)
-        //    {
+            //Assert
+            for (int i = 0; i < Items.Count; i++)
+            {
+                Assert.AreEqual(Sorted[i], sort.Items[i]);
+            }
+        }
 
-        //        Items.Add(rnd.Next(minrand, maxrand));
-        //    }
-        //    Sorted.AddRange(Items.OrderBy(x => x));
 
-        //    var sort = new BozoSort<int>();
+        [TestMethod]
+        [DataTestMethod]
+        [DataRow(0)]
+        [DataRow(1)]
+        [DataRow(2)]
+        [DataRow(3)]
+        [DataRow(4)]
+        public void BaseSortTest(int number)
+        {
+            //Arrange
+            var sort = FillMass<AlgorithmBase<int>>(number);
+            //ACT
+            sort.Sort();
 
-        //    sort.Items.AddRange(Items);
-        //    //ACT
-        //    sort.Sort();
-
-        //    //Assert
-        //    for (int i = 0; i < Items.Count; i++)
-        //    {
-        //        Assert.AreEqual(Sorted[i], sort.Items[i]);
-        //    }
-        //}
+            //Assert
+            for (int i = 0; i < Items.Count; i++)
+            {
+                Assert.AreEqual(Sorted[i], sort.Items[i]);
+            }
+        }
     }
 }

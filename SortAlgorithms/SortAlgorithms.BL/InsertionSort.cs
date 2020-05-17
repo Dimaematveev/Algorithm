@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SortAlgorithms.BL
 {
-    public class InsertionSort<T> : AlgorithmsBase<T> where T : IComparable
+    public class InsertionSort<T> : AlgorithmBase<T> where T : IComparable
     {
         public override event Action<int, int, bool?> ItemsEdit;
         protected override void MakeSort()

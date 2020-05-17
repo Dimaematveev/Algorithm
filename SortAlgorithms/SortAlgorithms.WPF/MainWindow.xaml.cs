@@ -23,7 +23,7 @@ namespace SortAlgorithms.WPF
     public partial class MainWindow : Window
     {
         readonly List<SortedItem> items = new List<SortedItem>();
-        AlgorithmsBase<int> Sortes;
+        AlgorithmBase<int> Sortes;
         int sleep = 0;
         public MainWindow()
         {
@@ -38,12 +38,13 @@ namespace SortAlgorithms.WPF
             CocktailSort.Click += (s, e) => { FillAndSort_Click<CocktailSort<int>>(); };
             BozoSort.Click += (s, e) => { FillAndSort_Click<BozoSort<int>>(); };
             InsertionSort.Click += (s, e) => { FillAndSort_Click<InsertionSort<int>>(); };
+            ShellSort.Click += (s, e) => { FillAndSort_Click<ShellSort<int>>(); };
 
 
             Time.ValueChanged += Time_ValueChanged;
         }
 
-        private void FillAndSort_Click<T>() where T: AlgorithmsBase<int>,new()
+        private void FillAndSort_Click<T>() where T: AlgorithmBase<int>,new()
         {
             Sortes = new T();
             Sortes.ItemsEdit += Algorithm_ItemsEdit;

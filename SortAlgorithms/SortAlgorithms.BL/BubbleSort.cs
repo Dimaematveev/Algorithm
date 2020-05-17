@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace SortAlgorithms.BL
 {
-    public class BubbleSort<T> : AlgorithmsBase<T> where T : IComparable
+    public class BubbleSort<T> : AlgorithmBase<T> where T : IComparable
     {
         public override event Action<int, int, bool? > ItemsEdit;
         protected override void MakeSort()

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SortAlgorithms.BL
 {
-    public class BozoSort<T> : AlgorithmsBase<T> where T : IComparable
+    public class BozoSort<T> : AlgorithmBase<T> where T : IComparable
     {
         private readonly Random rnd = new Random();
         public override event Action<int, int, bool?> ItemsEdit;
