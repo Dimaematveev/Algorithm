@@ -79,10 +79,7 @@ namespace SortAlgorithms.BL.Tests
             sort.Sort();
 
             //Assert
-            for (int i = 0; i < Items.Count; i++)
-            {
-                Assert.AreEqual(Sorted[i], sort.Items[i]);
-            }
+            AssertSorted(sort);
         }
 
         [TestMethod]
@@ -103,10 +100,7 @@ namespace SortAlgorithms.BL.Tests
             sort.Sort();
 
             //Assert
-            for (int i = 0; i < Items.Count; i++)
-            {
-                Assert.AreEqual(Sorted[i], sort.Items[i]);
-            }
+            AssertSorted(sort);
         }
 
 
@@ -128,10 +122,7 @@ namespace SortAlgorithms.BL.Tests
             sort.Sort();
 
             //Assert
-            for (int i = 0; i < Items.Count; i++)
-            {
-                Assert.AreEqual(Sorted[i], sort.Items[i]);
-            }
+            AssertSorted(sort);
         }
 
 
@@ -153,10 +144,7 @@ namespace SortAlgorithms.BL.Tests
             sort.Sort();
 
             //Assert
-            for (int i = 0; i < Items.Count; i++)
-            {
-                Assert.AreEqual(Sorted[i], sort.Items[i]);
-            }
+            AssertSorted(sort);
         }
 
         [TestMethod]
@@ -177,11 +165,10 @@ namespace SortAlgorithms.BL.Tests
             sort.Sort();
 
             //Assert
-            for (int i = 0; i < Items.Count; i++)
-            {
-                Assert.AreEqual(Sorted[i], sort.Items[i]);
-            }
+            AssertSorted(sort);
         }
+
+
         [TestMethod]
         [DataTestMethod]
         [DataRow(N1)]
@@ -200,10 +187,7 @@ namespace SortAlgorithms.BL.Tests
             sort.Sort();
 
             //Assert
-            for (int i = 0; i < Items.Count; i++)
-            {
-                Assert.AreEqual(Sorted[i], sort.Items[i]);
-            }
+            AssertSorted(sort);
         }
 
         
@@ -227,6 +211,33 @@ namespace SortAlgorithms.BL.Tests
             sort.Sort();
 
             //Assert
+            AssertSorted(sort);
+        }
+
+
+        [TestMethod]
+        [DataTestMethod]
+        [DataRow(N1)]
+        [DataRow(N2)]
+        [DataRow(N3)]
+        [DataRow(N4)]
+        [DataRow(N5)]
+        [DataRow(N6)]
+        [DataRow(N7)]
+        public void HeapTest(string number)
+        {
+            //Arrange
+            var sort = new HeapSort<int>();
+            sort.Items.AddRange(Items);
+            //ACT
+            sort.Sort();
+
+            //Assert
+            AssertSorted(sort);
+        }
+
+        private void AssertSorted<T>(T sort) where T:AlgorithmBase<int>
+        {
             for (int i = 0; i < Items.Count; i++)
             {
                 Assert.AreEqual(Sorted[i], sort.Items[i]);
