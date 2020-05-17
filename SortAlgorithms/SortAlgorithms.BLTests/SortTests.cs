@@ -23,7 +23,7 @@ namespace SortAlgorithms.BL.Tests
         const string N5 = "Number=5821";
         const string N6 = "Number=11200";
         const string N7 = "Number=15010";
-        int[] count = new int[]
+        readonly int[] count = new int[]
         {
             Convert.ToInt32(N1.Substring(7)),
             Convert.ToInt32(N2.Substring(7)),
@@ -70,7 +70,7 @@ namespace SortAlgorithms.BL.Tests
         [DataRow(N5)]
         [DataRow(N6)]
         [DataRow(N7)]
-        public void BaseSortTest(string number)
+        public void BaseSortTest(string _1)
         {
             //Arrange
             var sort = new AlgorithmBase<int>();
@@ -91,7 +91,7 @@ namespace SortAlgorithms.BL.Tests
         [DataRow(N5)]
         [DataRow(N6)]
         [DataRow(N7)]
-        public void BubbleTest(string number)
+        public void BubbleTest(string _1)
         {
             //Arrange
             var sort = new BubbleSort<int>();
@@ -113,7 +113,7 @@ namespace SortAlgorithms.BL.Tests
         [DataRow(N5)]
         [DataRow(N6)]
         [DataRow(N7)]
-        public void CocktailTest(string number)
+        public void CocktailTest(string _1)
         {
             //Arrange
             var sort = new CocktailSort<int>();
@@ -135,7 +135,7 @@ namespace SortAlgorithms.BL.Tests
         [DataRow(N5)]
         [DataRow(N6)]
         [DataRow(N7)]
-        public void InsectionTest(string number)
+        public void InsectionTest(string _1)
         {
             //Arrange
             var sort = new InsertionSort<int>();
@@ -156,7 +156,7 @@ namespace SortAlgorithms.BL.Tests
         [DataRow(N5)]
         [DataRow(N6)]
         [DataRow(N7)]
-        public void ShellTest(string number)
+        public void ShellTest(string _1)
         {
             //Arrange
             var sort = new ShellSort<int>();
@@ -178,7 +178,7 @@ namespace SortAlgorithms.BL.Tests
         [DataRow(N5)]
         [DataRow(N6)]
         [DataRow(N7)]
-        public void SelectionTest(string number)
+        public void SelectionTest(string _1)
         {
             //Arrange
             var sort = new SelectionSort<int>();
@@ -202,7 +202,7 @@ namespace SortAlgorithms.BL.Tests
         [DataRow(N5)]
         [DataRow(N6)]
         [DataRow(N7)]
-        public void TreeSortTest(string number)
+        public void TreeSortTest(string _1)
         {
             //Arrange
             var sort = new TreeSort<int>();
@@ -224,7 +224,7 @@ namespace SortAlgorithms.BL.Tests
         [DataRow(N5)]
         [DataRow(N6)]
         [DataRow(N7)]
-        public void HeapTest(string number)
+        public void HeapTest(string _1)
         {
             //Arrange
             var sort = new HeapSort<int>();

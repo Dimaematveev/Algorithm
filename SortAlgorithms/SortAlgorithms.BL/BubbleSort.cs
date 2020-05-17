@@ -16,11 +16,7 @@ namespace SortAlgorithms.BL
                 
                 for (int i = 0; i < count - 1; i++)
                 {
-                    var a = Items[i];
-                    var b = Items[i + 1];
-
-                    ComparisonCount++;
-                    if (a.CompareTo(b) == 1)
+                    if (Compare(i, i+1) == 1)
                     {
                         ItemsEdit?.Invoke(i, i + 1, null);
                         Swop(i, i + 1);

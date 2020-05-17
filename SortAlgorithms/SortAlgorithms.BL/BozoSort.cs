@@ -30,7 +30,7 @@ namespace SortAlgorithms.BL
                 for (int i = 1; i < Items.Count; i++)
                 {
                     ItemsEdit?.Invoke(i-1, i, false);
-                    if (Items[i-1].CompareTo(Items[i])==1)
+                    if (Compare(i - 1, i) == 1)
                     {
                         ItemsEdit?.Invoke(i - 1, i, null);
                         isEnd = false;

@@ -18,13 +18,11 @@ namespace SortAlgorithms.BL
                 var j = i;
                 while (j > 0) 
                 {
-                    ComparisonCount++;
-                    if (temp.CompareTo(Items[j - 1]) == -1)
+                    if (Compare(j, j-1) == -1)
                     {
                         ItemsEdit?.Invoke(j, j - 1, null);
                         Swop(j, j - 1);
                         ItemsEdit?.Invoke(j, j - 1, true);
-                        
                         j--;
                     }
                     else

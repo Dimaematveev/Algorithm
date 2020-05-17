@@ -44,5 +44,11 @@ namespace SortAlgorithms.BL
         {
             Items.Sort();
         }
+
+        protected int Compare(int indA, int indB)
+        {
+            ComparisonCount++;
+            return Items[indA].CompareTo(Items[indB]);
+        }
     }
 }

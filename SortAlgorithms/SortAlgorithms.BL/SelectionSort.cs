@@ -16,16 +16,14 @@ namespace SortAlgorithms.BL
             for (int i = 0; i < Items.Count-1; i++)
             {
                 var minInd = i;
-                var tempVal = Items[minInd];
                 
                 for (int j = i+1; j < Items.Count; j++)
                 {
-                    ComparisonCount++;
-                    if (tempVal.CompareTo(Items[j]) == 1)
+                    
+                    if (Compare(minInd, j) == 1)
                     {
                         ItemsEdit?.Invoke(j, minInd, null);
                         minInd = j;
-                        tempVal = Items[j];
                     }
                     else
                     {

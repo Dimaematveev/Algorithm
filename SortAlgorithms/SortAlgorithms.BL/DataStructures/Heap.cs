@@ -9,7 +9,7 @@ namespace SortAlgorithms.BL.DataStructures
 {
     class Heap<T> where T:IComparable
     {
-        private List<T> items = new List<T>();
+        private readonly List<T> items = new List<T>();
         public int Count => items.Count;
 
         public T Peek()

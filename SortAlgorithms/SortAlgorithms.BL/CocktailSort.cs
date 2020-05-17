@@ -15,8 +15,7 @@ namespace SortAlgorithms.BL
                 var sc = SwopCount;
                 for (int i = left; i < right; i++)
                 {
-                    ComparisonCount++;
-                    if (Items[i].CompareTo(Items[i + 1])==1) 
+                    if (Compare(i, i + 1) == 1) 
                     {
                         ItemsEdit?.Invoke(i, i + 1, null);
                         Swop(i, i + 1);
@@ -36,8 +35,7 @@ namespace SortAlgorithms.BL
 
                 for (int i = right; i > left; i--)
                 {
-                    ComparisonCount++;
-                    if (Items[i].CompareTo(Items[i - 1]) == -1) 
+                    if (Compare(i, i - 1) == -1) 
                     {
                         ItemsEdit?.Invoke(i, i - 1, null);
                         Swop(i - 1, i);
