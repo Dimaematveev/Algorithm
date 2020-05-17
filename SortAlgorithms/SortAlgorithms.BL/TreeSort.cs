@@ -9,7 +9,6 @@ namespace SortAlgorithms.BL
 {
     public class TreeSort<T> : AlgorithmBase<T> where T : IComparable
     {
-        public override event Action<int, int, bool?> ItemsEdit;
 
         protected override void MakeSort()
         {

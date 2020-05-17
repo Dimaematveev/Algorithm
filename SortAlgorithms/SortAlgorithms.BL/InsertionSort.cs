@@ -8,26 +8,21 @@ namespace SortAlgorithms.BL
 {
     public class InsertionSort<T> : AlgorithmBase<T> where T : IComparable
     {
-        public override event Action<int, int, bool?> ItemsEdit;
         protected override void MakeSort()
         {
             ComparisonCount = 0;
             for (int i = 1; i < Items.Count; i++)
             {
-                var temp = Items[i];
                 var j = i;
                 while (j > 0) 
                 {
                     if (Compare(j, j-1) == -1)
                     {
-                        ItemsEdit?.Invoke(j, j - 1, null);
                         Swop(j, j - 1);
-                        ItemsEdit?.Invoke(j, j - 1, true);
                         j--;
                     }
                     else
                     {
-                        ItemsEdit?.Invoke(j, j - 1, false);
                         break;
                     }
                     

@@ -8,7 +8,6 @@ namespace SortAlgorithms.BL
 {
     public class ShellSort<T> : AlgorithmBase<T> where T : IComparable
     {
-        public override event Action<int, int, bool?> ItemsEdit;
         protected override void MakeSort()
         {
             var step = Items.Count / 2;
@@ -23,14 +22,11 @@ namespace SortAlgorithms.BL
                     {
                         if (Compare(j - step, j) == 1)
                         {
-                            ItemsEdit?.Invoke(j - step, j, null);
                             Swop(j - step, j);
                             j -= step;
-                            ItemsEdit?.Invoke(j, j + step, true);
                         }
                         else
                         {
-                            ItemsEdit?.Invoke(j - step, j, false);
                             break;
                         }
                         

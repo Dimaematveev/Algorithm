@@ -16,30 +16,28 @@ namespace SortAlgorithms.BL
         {
             if (positionA < Items.Count && positionB < Items.Count)
             {
-                ItemsEdit?.Invoke(positionA, positionB, null);
+                SetEvent(positionA, positionB, null);
                 var temp = Items[positionA];
                 Items[positionA] = Items[positionB];
                 Items[positionB] = temp;
-                ItemsEdit?.Invoke(positionA, positionB, true);
-
                 SwopCount++;
+                SetEvent(positionA, positionB, true);
+
             }
         }
 
-       
-
+        protected Stopwatch Timer = new Stopwatch();
         public TimeSpan Sort()
         {
-            var timer = new Stopwatch();
+            Timer = new Stopwatch();
             SwopCount = 0;
-
-            timer.Start();
+            ComparisonCount = 0;
+            Timer.Start();
             MakeSort();
-            timer.Stop();
+            Timer.Stop();
 
-            return timer.Elapsed;
+            return Timer.Elapsed;
         }
-
         protected virtual void MakeSort()
         {
             Items.Sort();
@@ -48,7 +46,15 @@ namespace SortAlgorithms.BL
         protected int Compare(int indA, int indB)
         {
             ComparisonCount++;
+            SetEvent(indA, indB, false);
             return Items[indA].CompareTo(Items[indB]);
+        }
+
+        protected void SetEvent(int posA, int posB, bool? b)
+        {
+            Timer.Stop();
+            ItemsEdit?.Invoke(posA, posB, b);
+            Timer.Start();
         }
     }
 }

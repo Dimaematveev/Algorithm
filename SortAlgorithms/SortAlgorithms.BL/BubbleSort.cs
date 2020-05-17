@@ -5,7 +5,6 @@ namespace SortAlgorithms.BL
 {
     public class BubbleSort<T> : AlgorithmBase<T> where T : IComparable
     {
-        public override event Action<int, int, bool? > ItemsEdit;
         protected override void MakeSort()
         {
             var count = Items.Count;
@@ -18,13 +17,7 @@ namespace SortAlgorithms.BL
                 {
                     if (Compare(i, i+1) == 1)
                     {
-                        ItemsEdit?.Invoke(i, i + 1, null);
                         Swop(i, i + 1);
-                        ItemsEdit?.Invoke(i, i + 1, true);
-                    }
-                    else
-                    {
-                        ItemsEdit?.Invoke(i, i + 1, false);
                     }
                     
                 }

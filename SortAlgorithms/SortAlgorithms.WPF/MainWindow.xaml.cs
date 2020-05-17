@@ -67,12 +67,17 @@ namespace SortAlgorithms.WPF
 
         private void Sort_Click()
         {
-            Sortes.Sort();
-            
+            var time = Sortes.Sort();
+
+            Dispatcher.Invoke((Action)delegate
+            {
+                Information.Text += $" Время = {time.TotalMilliseconds}ms.";
+            });
         }
 
         private void Algorithm_ItemsEdit(int posA, int posB, bool? isEdit)
         {
+
             {
                 int temp = Math.Min(posA, posB);
                 posB = Math.Max(posA, posB);
@@ -105,14 +110,15 @@ namespace SortAlgorithms.WPF
                 items[posA].ProgressBar.Foreground = color;
                 items[posB].ProgressBar.Foreground = color;
             });
+            
             Thread.Sleep((int)(Math.Pow(2,sleep)* 1000));
+            
             Dispatcher.Invoke((Action)delegate
             {
                 var color = Brushes.Yellow;
                 items[posA].ProgressBar.Foreground = color;
                 items[posB].ProgressBar.Foreground = color;
             });
-
         }
 
         private void Fill_Click(object sender, RoutedEventArgs e)

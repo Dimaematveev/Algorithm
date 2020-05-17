@@ -7,8 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid Margin="0">
-        <StackPanel Orientation="Horizontal" Height="160" HorizontalAlignment="Left"  VerticalAlignment="Top">
-            <StackPanel Orientation="Vertical" Width="300" >
+        <Grid Height="160" HorizontalAlignment="Left"  VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Vertical"  Grid.Column="0">
                 <Grid Height="50">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -50,18 +54,17 @@
                 <Button x:Name="Clear" Content="Очистить"/>
                 <TextBox x:Name="Information" Text="Перестановок = 0; Проверок =0."/>
             </StackPanel>
-            <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition Height="20"/>
-            </Grid.RowDefinitions>
-            <ScrollViewer x:Name="ScrollProgress" CanContentScroll="True" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden">
-                <StackPanel Orientation="Horizontal" Margin="10" x:Name="ProgressBars" />
-            </ScrollViewer>
-            <Slider MinWidth="100" Grid.Row="1" x:Name="Time" Value="0"  Minimum="-10" Maximum="5"/>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+                <ScrollViewer x:Name="ScrollProgress" CanContentScroll="True" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden">
+                    <StackPanel Orientation="Horizontal" Margin="10" x:Name="ProgressBars" />
+                </ScrollViewer>
+                <Slider MinWidth="100" Grid.Row="1" x:Name="Time" Value="0"  Minimum="-10" Maximum="5"/>
+            </Grid>
         </Grid>
-
-        </StackPanel>
 
 
     </Grid>
