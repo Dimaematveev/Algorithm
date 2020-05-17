@@ -30,7 +30,7 @@ namespace SortAlgorithms.WPF
             InitializeComponent();
             AddButon.Click += AddButon_Click;
             FillButton.Click += Fill_Click;
-
+            Clear.Click += Clear_Click;
 
             //Sort.Click += (x, y) => {Task.Run(() => Sort_Click());};
 
@@ -40,8 +40,15 @@ namespace SortAlgorithms.WPF
             InsertionSort.Click += (s, e) => { FillAndSort_Click<InsertionSort<int>>(); };
             ShellSort.Click += (s, e) => { FillAndSort_Click<ShellSort<int>>(); };
 
+            
 
             Time.ValueChanged += Time_ValueChanged;
+        }
+
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+            items.Clear();
+            ProgressBars.Children.Clear();
         }
 
         private void FillAndSort_Click<T>() where T: AlgorithmBase<int>,new()
