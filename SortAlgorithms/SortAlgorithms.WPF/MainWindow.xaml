@@ -48,7 +48,7 @@
                     </Button.ContextMenu>
                 </Button>
                 <Button x:Name="Clear" Content="Очистить"/>
-                <TextBlock x:Name="Information" Text="Перестановок = 0; Проверок =0."/>
+                <TextBox x:Name="Information" Text="Перестановок = 0; Проверок =0."/>
             </StackPanel>
             <Grid>
             <Grid.RowDefinitions>
