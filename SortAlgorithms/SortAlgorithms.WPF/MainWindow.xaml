@@ -41,7 +41,8 @@
                         <MenuItem Header="Шейкерная сортировка"  Name="CocktailSort"/>
                         <MenuItem Header="Сортировка клоуна Бозо"  Name="BozoSort"/>
                         <MenuItem Header="Сортировка вставками"  Name="InsertionSort"/>
-                        <MenuItem Header="Сортировка шелла"  Name="ShellSort"/>
+                        <MenuItem Header="Сортировка Шелла"  Name="ShellSort"/>
+                        <MenuItem Header="Сортировка выбором"  Name="SelectionSort"/>
                     </ContextMenu>
                 </Button.ContextMenu>
             </Button>
@@ -55,7 +56,7 @@
             <ScrollViewer x:Name="ScrollProgress" CanContentScroll="True" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden">
                 <StackPanel Orientation="Horizontal" Margin="10" x:Name="ProgressBars" />
             </ScrollViewer>
-            <Slider MinWidth="100" Grid.Row="1" x:Name="Time" Value="0"  Minimum="-10" Maximum="10"/>
+            <Slider MinWidth="100" Grid.Row="1" x:Name="Time" Value="0"  Minimum="-10" Maximum="5"/>
         </Grid>
         
         

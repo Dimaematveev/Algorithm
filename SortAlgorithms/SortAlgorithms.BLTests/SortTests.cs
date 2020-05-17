@@ -16,50 +16,85 @@ namespace SortAlgorithms.BL.Tests
         readonly List<int> Items = new List<int>();
         readonly List<int> Sorted = new List<int>();
 
+        const string N1 = "Number=3";
+        const string N2 = "Number=15";
+        const string N3 = "Number=141";
+        const string N4 = "Number=1258";
+        const string N5 = "Number=5821";
+        const string N6 = "Number=11200";
+        const string N7 = "Number=15010";
+        int[] count = new int[]
+        {
+            Convert.ToInt32(N1.Substring(7)),
+            Convert.ToInt32(N2.Substring(7)),
+            Convert.ToInt32(N3.Substring(7)),
+            Convert.ToInt32(N4.Substring(7)),
+            Convert.ToInt32(N5.Substring(7)),
+            Convert.ToInt32(N6.Substring(7)),
+            Convert.ToInt32(N7.Substring(7)),
+        };
 
         [TestInitialize]
         public void Init()
         {
-            List<string> simb;
+            int number;
             string path = @"C:\Users\Дмитрий\Source\Repos\Algorithm\SortAlgorithms\SortAlgorithms.BLTests\number.txt";
             using (StreamReader sr = new StreamReader(path))
             {
-                simb = sr.ReadLine().Split(';').Where(x=>!string.IsNullOrWhiteSpace(x)).ToList();
+                number = Convert.ToInt32(sr.ReadLine());
             }
-            int number = Convert.ToInt32(simb[0]);
-            var temp = simb[0];
-            simb.RemoveAt(0);
-            simb.Add(temp);
+
             using (StreamWriter sw = new StreamWriter(path, false, System.Text.Encoding.Default))
             {
-                foreach (var item in simb)
-                {
-                    sw.Write($"{item};");
-                }
+                sw.Write($"{(number + 1) % count.Length}");
             }
             Items.Clear();
             Sorted.Clear();
             
-            int[] count = new int[] { 3, 10, 1000, 1084, 10000 };
-            int[] minrand = new int[] { 0, 0, 0, 0, 100 };
-            int[] maxrand = new int[] { 2, 100, 100000, 10, 10000 };
+            
             for (int i = 0; i < count[number]; i++)
             {
-                Items.Add(rnd.Next(minrand[number], maxrand[number]));
+                Items.Add(rnd.Next(0, 1000));
             }
             Sorted.AddRange(Items.OrderBy(x => x));
 
 
         }
-       
+
         [TestMethod]
         [DataTestMethod]
-        [DataRow(0)]
-        [DataRow(1)]
-        [DataRow(2)]
-        [DataRow(3)]
-        [DataRow(4)]
-        public void BubbleTest(int number)
+        [DataRow(N1)]
+        [DataRow(N2)]
+        [DataRow(N3)]
+        [DataRow(N4)]
+        [DataRow(N5)]
+        [DataRow(N6)]
+        [DataRow(N7)]
+        public void BaseSortTest(string number)
+        {
+            //Arrange
+            var sort = new AlgorithmBase<int>();
+            sort.Items.AddRange(Items);
+            //ACT
+            sort.Sort();
+
+            //Assert
+            for (int i = 0; i < Items.Count; i++)
+            {
+                Assert.AreEqual(Sorted[i], sort.Items[i]);
+            }
+        }
+
+        [TestMethod]
+        [DataTestMethod]
+        [DataRow(N1)]
+        [DataRow(N2)]
+        [DataRow(N3)]
+        [DataRow(N4)]
+        [DataRow(N5)]
+        [DataRow(N6)]
+        [DataRow(N7)]
+        public void BubbleTest(string number)
         {
             //Arrange
             var sort = new BubbleSort<int>();
@@ -77,12 +112,14 @@ namespace SortAlgorithms.BL.Tests
 
         [TestMethod]
         [DataTestMethod]
-        [DataRow(0)]
-        [DataRow(1)]
-        [DataRow(2)]
-        [DataRow(3)]
-        [DataRow(4)]
-        public void CocktailTest(int number)
+        [DataRow(N1)]
+        [DataRow(N2)]
+        [DataRow(N3)]
+        [DataRow(N4)]
+        [DataRow(N5)]
+        [DataRow(N6)]
+        [DataRow(N7)]
+        public void CocktailTest(string number)
         {
             //Arrange
             var sort = new CocktailSort<int>();
@@ -100,12 +137,14 @@ namespace SortAlgorithms.BL.Tests
 
         [TestMethod]
         [DataTestMethod]
-        [DataRow(0)]
-        [DataRow(1)]
-        [DataRow(2)]
-        [DataRow(3)]
-        [DataRow(4)]
-        public void InsectionTest(int number)
+        [DataRow(N1)]
+        [DataRow(N2)]
+        [DataRow(N3)]
+        [DataRow(N4)]
+        [DataRow(N5)]
+        [DataRow(N6)]
+        [DataRow(N7)]
+        public void InsectionTest(string number)
         {
             //Arrange
             var sort = new InsertionSort<int>();
@@ -122,12 +161,14 @@ namespace SortAlgorithms.BL.Tests
 
         [TestMethod]
         [DataTestMethod]
-        [DataRow(0)]
-        [DataRow(1)]
-        [DataRow(2)]
-        [DataRow(3)]
-        [DataRow(4)]
-        public void ShellTest(int number)
+        [DataRow(N1)]
+        [DataRow(N2)]
+        [DataRow(N3)]
+        [DataRow(N4)]
+        [DataRow(N5)]
+        [DataRow(N6)]
+        [DataRow(N7)]
+        public void ShellTest(string number)
         {
             //Arrange
             var sort = new ShellSort<int>();
@@ -141,19 +182,46 @@ namespace SortAlgorithms.BL.Tests
                 Assert.AreEqual(Sorted[i], sort.Items[i]);
             }
         }
+        [TestMethod]
+        [DataTestMethod]
+        [DataRow(N1)]
+        [DataRow(N2)]
+        [DataRow(N3)]
+        [DataRow(N4)]
+        [DataRow(N5)]
+        [DataRow(N6)]
+        [DataRow(N7)]
+        public void SelectionTest(string number)
+        {
+            //Arrange
+            var sort = new SelectionSort<int>();
+            sort.Items.AddRange(Items);
+            //ACT
+            sort.Sort();
+
+            //Assert
+            for (int i = 0; i < Items.Count; i++)
+            {
+                Assert.AreEqual(Sorted[i], sort.Items[i]);
+            }
+        }
+
+        
 
 
         [TestMethod]
         [DataTestMethod]
-        [DataRow(0)]
-        [DataRow(1)]
-        [DataRow(2)]
-        [DataRow(3)]
-        [DataRow(4)]
-        public void BaseSortTest(int number)
+        [DataRow(N1)]
+        [DataRow(N2)]
+        [DataRow(N3)]
+        [DataRow(N4)]
+        [DataRow(N5)]
+        [DataRow(N6)]
+        [DataRow(N7)]
+        public void TreeSortTest(string number)
         {
             //Arrange
-            var sort = new AlgorithmBase<int>();
+            var sort = new TreeSort<int>();
             sort.Items.AddRange(Items);
             //ACT
             sort.Sort();

@@ -39,6 +39,7 @@ namespace SortAlgorithms.WPF
             BozoSort.Click += (s, e) => { FillAndSort_Click<BozoSort<int>>(); };
             InsertionSort.Click += (s, e) => { FillAndSort_Click<InsertionSort<int>>(); };
             ShellSort.Click += (s, e) => { FillAndSort_Click<ShellSort<int>>(); };
+            SelectionSort.Click += (s, e) => { FillAndSort_Click<SelectionSort<int>>(); };
 
             
 
