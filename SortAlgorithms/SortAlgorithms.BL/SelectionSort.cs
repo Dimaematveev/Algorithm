@@ -18,8 +18,8 @@ namespace SortAlgorithms.BL
                 
                 for (int j = i+1; j < Items.Count; j++)
                 {
-                    
-                    if (Compare(minInd, j) == 1)
+
+                    if (Compare(minInd, j, 1)) 
                     {
                         minInd = j;
                     }

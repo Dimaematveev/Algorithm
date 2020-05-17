@@ -10,13 +10,12 @@ namespace SortAlgorithms.BL
     {
         protected override void MakeSort()
         {
-            ComparisonCount = 0;
             for (int i = 1; i < Items.Count; i++)
             {
                 var j = i;
                 while (j > 0) 
                 {
-                    if (Compare(j, j-1) == -1)
+                    if (Compare(j, j - 1, -1)) 
                     {
                         Swop(j, j - 1);
                         j--;

@@ -20,7 +20,7 @@ namespace SortAlgorithms.BL
                     int j = i;
                     while ((j>=step))
                     {
-                        if (Compare(j - step, j) == 1)
+                        if (Compare(j - step, j, 1)) 
                         {
                             Swop(j - step, j);
                             j -= step;

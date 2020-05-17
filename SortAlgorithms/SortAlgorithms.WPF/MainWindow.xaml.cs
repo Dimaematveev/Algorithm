@@ -75,7 +75,7 @@ namespace SortAlgorithms.WPF
             });
         }
 
-        private void Algorithm_ItemsEdit(int posA, int posB, bool? isEdit)
+        private void Algorithm_ItemsEdit(int posA, int posB, bool isEdit, SolidColorBrush color)
         {
 
             {
@@ -87,9 +87,8 @@ namespace SortAlgorithms.WPF
                 var cc = ScrollProgress.ViewportWidth;
                 double offset = ScrollProgress.ExtentWidth * posA / items.Count - cc / 2;
                 ScrollProgress.ScrollToHorizontalOffset(offset);
-                var color = Brushes.Blue;
                 Information.Text = $"Перестановок = {Sortes.SwopCount}; Проверок ={Sortes.ComparisonCount}.";
-                if (isEdit == true)
+                if (isEdit)
                 {
                     var temp1 = items[posA];
                     items[posA] = items[posB];
@@ -100,11 +99,6 @@ namespace SortAlgorithms.WPF
                     ProgressBars.Children.Insert(posA, items[posA].Grid);
                     ProgressBars.Children.Insert(posB, items[posB].Grid);
 
-                    color = Brushes.Red;
-                }
-                else if (isEdit == false)
-                {
-                    color = Brushes.Green;
                 }
 
                 items[posA].ProgressBar.Foreground = color;
@@ -115,8 +109,8 @@ namespace SortAlgorithms.WPF
             
             Dispatcher.Invoke((Action)delegate
             {
-                var color = Brushes.Yellow;
-                items[posA].ProgressBar.Foreground = color;
+                color = Brushes.Yellow;
+                items[posA].ProgressBar.Foreground =color;
                 items[posB].ProgressBar.Foreground = color;
             });
         }

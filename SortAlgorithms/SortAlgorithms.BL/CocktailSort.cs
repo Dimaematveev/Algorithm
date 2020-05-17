@@ -14,7 +14,7 @@ namespace SortAlgorithms.BL
                 var sc = SwopCount;
                 for (int i = left; i < right; i++)
                 {
-                    if (Compare(i, i + 1) == 1) 
+                    if (Compare(i, i + 1, 1)) 
                     {
                         Swop(i, i + 1);
                     }
@@ -28,7 +28,7 @@ namespace SortAlgorithms.BL
 
                 for (int i = right; i > left; i--)
                 {
-                    if (Compare(i, i - 1) == -1) 
+                    if (Compare(i, i - 1, -1)) 
                     {
                         Swop(i - 1, i);
                     }

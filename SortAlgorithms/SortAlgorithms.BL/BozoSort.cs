@@ -26,7 +26,7 @@ namespace SortAlgorithms.BL
                 isEnd = true;
                 for (int i = 1; i < Items.Count; i++)
                 {
-                    if (Compare(i - 1, i) == 1) 
+                    if (Compare(i - 1, i, 1))  
                     {
                         isEnd = false;
                         break;
