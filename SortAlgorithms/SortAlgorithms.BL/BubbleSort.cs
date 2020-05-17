@@ -18,18 +18,19 @@ namespace SortAlgorithms.BL
                 {
                     var a = Items[i];
                     var b = Items[i + 1];
-                    
+
+                    ComparisonCount++;
                     if (a.CompareTo(b) == 1)
                     {
                         ItemsEdit?.Invoke(i, i + 1, null);
                         Swop(i, i + 1);
-                        ComparisonCount++;
                         ItemsEdit?.Invoke(i, i + 1, true);
                     }
                     else
                     {
                         ItemsEdit?.Invoke(i, i + 1, false);
                     }
+                    
                 }
                 count--;
 

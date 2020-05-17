@@ -83,6 +83,7 @@ namespace SortAlgorithms.WPF
                 double offset = ScrollProgress.ExtentWidth * posA / items.Count - cc / 2;
                 ScrollProgress.ScrollToHorizontalOffset(offset);
                 var color = Brushes.Blue;
+                Information.Text = $"Перестановок = {Sortes.SwopCount}; Проверок ={Sortes.ComparisonCount}.";
                 if (isEdit == true)
                 {
                     var temp1 = items[posA];

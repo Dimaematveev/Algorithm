@@ -21,6 +21,7 @@ namespace SortAlgorithms.BL
                     int j = i;
                     while ((j>=step))
                     {
+                        ComparisonCount++;
                         if (Items[j - step].CompareTo(Items[j]) == 1)
                         {
                             ItemsEdit?.Invoke(j - step, j, null);

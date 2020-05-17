@@ -20,6 +20,7 @@ namespace SortAlgorithms.BL
                 
                 for (int j = i+1; j < Items.Count; j++)
                 {
+                    ComparisonCount++;
                     if (tempVal.CompareTo(Items[j]) == 1)
                     {
                         ItemsEdit?.Invoke(j, minInd, null);
