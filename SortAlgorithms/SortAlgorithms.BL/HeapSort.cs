@@ -12,9 +12,9 @@ namespace SortAlgorithms.BL
 
         protected override void MakeSort()
         {
-            var heap = new Heap<T>(Items);
-            var sorted = heap.Order();
-            Items = sorted;
+            var heap = new Heap<T>();
+            heap.SetItems(Items);
+            Items=heap.Order();
         }
     }
 }

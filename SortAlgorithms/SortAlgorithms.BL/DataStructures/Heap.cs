@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 
 namespace SortAlgorithms.BL.DataStructures
 {
-    class Heap<T> where T:IComparable
+    public class Heap<T> : AlgorithmBase<T> where T:IComparable
     {
-        private readonly List<T> items = new List<T>();
-        public int Count => items.Count;
+        public AlgorithmBase<T> AlgorithmBase;
+        public int Count => Items.Count;
 
         public T Peek()
         {
             if (Count > 0)
             {
-                return items[0];
+                return Items[0];
             }
             else
             {
-                throw new ArgumentNullException(nameof(items),"Куча пуста");
+                throw new ArgumentNullException(nameof(Items),"Куча пуста");
             }
         }
 
@@ -28,24 +28,28 @@ namespace SortAlgorithms.BL.DataStructures
 
         public Heap(IEnumerable<T> items)
         {
-            this.items.AddRange(items);
+            SetItems(items);
+        }
+        public override void SetItems(IEnumerable<T> items)
+        {
+            Items = new List<T>();
+            Items.AddRange(items);
             for (int i = Count; i >= 0; i--)
             {
                 Sort(i);
             }
         }
 
-
         public void Add(T item)
         {
-            items.Add(item);
+            Items.Add(item);
 
             var currentIndex = Count - 1;
             var parentIndex = GetParentIndex(currentIndex);
 
-            while (currentIndex > 0 &&  items[parentIndex].CompareTo(items[currentIndex])==-1)
+            while (currentIndex > 0 && Compare(parentIndex, currentIndex, -1)) 
             {
-                Swap(currentIndex, parentIndex);
+                Swop(currentIndex, parentIndex);
 
                 currentIndex = parentIndex;
                 parentIndex = GetParentIndex(currentIndex);
@@ -54,9 +58,9 @@ namespace SortAlgorithms.BL.DataStructures
 
         public T GetMax()
         {
-            var result = items[0];
-            items[0] = items[Count - 1];
-            items.RemoveAt(Count - 1);
+            var result = Items[0];
+            Items[0] = Items[Count - 1];
+            Items.RemoveAt(Count - 1);
             Sort(0);
             return result;
         }
@@ -72,12 +76,12 @@ namespace SortAlgorithms.BL.DataStructures
                 leftIndex = 2 * curentIndex + 1;
                 rightIndex = 2 * curentIndex + 2;
 
-                if (leftIndex < Count && items[leftIndex].CompareTo(items[maxIndex]) == -1) 
+                if (leftIndex < Count && Compare(leftIndex, maxIndex, -1)) 
                 {
                     maxIndex = leftIndex;
                 }
 
-                if (rightIndex < Count && items[rightIndex].CompareTo(items[maxIndex]) == -1) 
+                if (rightIndex < Count && Compare(rightIndex, maxIndex, -1)) 
                 {
                     maxIndex = rightIndex;
                 }
@@ -87,18 +91,12 @@ namespace SortAlgorithms.BL.DataStructures
                     break;
                 }
 
-                Swap(curentIndex, maxIndex);
+                Swop(curentIndex, maxIndex);
                 curentIndex = maxIndex;
             }
         }
 
-        private void Swap(int currentIndex, int parentIndex)
-        {
-            var temp = items[currentIndex];
-            items[currentIndex] = items[parentIndex];
-            items[parentIndex] = temp;
-        }
-
+        
         private int GetParentIndex(int currentIndex)
         {
             return (currentIndex - 1) / 2;
@@ -113,5 +111,7 @@ namespace SortAlgorithms.BL.DataStructures
             }
             return result;
         }
+
+        
     }
 }

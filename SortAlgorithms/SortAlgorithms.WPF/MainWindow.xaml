@@ -48,6 +48,7 @@
                             <MenuItem Header="Сортировка вставками"  Name="InsertionSort"/>
                             <MenuItem Header="Сортировка Шелла"  Name="ShellSort"/>
                             <MenuItem Header="Сортировка выбором"  Name="SelectionSort"/>
+                            <MenuItem Header="Сортировка кучей"  Name="HeapSort"/>
                         </ContextMenu>
                     </Button.ContextMenu>
                 </Button>

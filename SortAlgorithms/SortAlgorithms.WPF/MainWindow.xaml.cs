@@ -40,6 +40,8 @@ namespace SortAlgorithms.WPF
             InsertionSort.Click += (s, e) => { FillAndSort_Click<InsertionSort<int>>(); };
             ShellSort.Click += (s, e) => { FillAndSort_Click<ShellSort<int>>(); };
             SelectionSort.Click += (s, e) => { FillAndSort_Click<SelectionSort<int>>(); };
+            //TODO: Для всех алгоритмов, наверное следует сделать отдельно при нажатии окно с поданными элементами, что получилось, вывод сортировки
+            HeapSort.Click += (s, e) => { FillAndSort_Click<HeapSort<int>>(); };
 
             
 
@@ -54,9 +56,8 @@ namespace SortAlgorithms.WPF
 
         private void FillAndSort_Click<T>() where T: AlgorithmBase<int>,new()
         {
-            Sortes = new T();
+            Sortes = new T(items.Select(x => x.Value).ToList());
             Sortes.ItemsEdit += Algorithm_ItemsEdit;
-            Sortes.Items = items.Select(x => x.Value).ToList();
             Task.Run(() => Sort_Click());
         }
 

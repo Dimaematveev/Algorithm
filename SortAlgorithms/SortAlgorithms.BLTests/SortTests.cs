@@ -228,7 +228,7 @@ namespace SortAlgorithms.BL.Tests
         {
             //Arrange
             var sort = new HeapSort<int>();
-            sort.Items.AddRange(Items);
+            sort.SetItems(Items);
             //ACT
             sort.Sort();
 
