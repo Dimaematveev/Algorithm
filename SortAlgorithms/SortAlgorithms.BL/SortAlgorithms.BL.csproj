@@ -45,6 +45,7 @@
     <Compile Include="AlgorithmsBase.cs" />
     <Compile Include="BozoSort.cs" />
     <Compile Include="BubbleSort.cs" />
+    <Compile Include="GnomeSort.cs" />
     <Compile Include="CocktailSort.cs" />
     <Compile Include="DataStructures\Heap.cs" />
     <Compile Include="DataStructures\Node.cs" />

@@ -34,16 +34,17 @@ namespace SortAlgorithms.WPF
 
             //Sort.Click += (x, y) => {Task.Run(() => Sort_Click());};
 
-            BubbleSort.Click += (s, e) => { FillAndSort_Click<BubbleSort<int>>(); };
-            CocktailSort.Click += (s, e) => { FillAndSort_Click<CocktailSort<int>>(); };
-            BozoSort.Click += (s, e) => { FillAndSort_Click<BozoSort<int>>(); };
-            InsertionSort.Click += (s, e) => { FillAndSort_Click<InsertionSort<int>>(); };
-            ShellSort.Click += (s, e) => { FillAndSort_Click<ShellSort<int>>(); };
-            SelectionSort.Click += (s, e) => { FillAndSort_Click<SelectionSort<int>>(); };
+            BubbleSortMenu.Click += (s, e) => { FillAndSort_Click<BubbleSort<int>>(); };
+            CocktailSortMenu.Click += (s, e) => { FillAndSort_Click<CocktailSort<int>>(); };
+            //BozoSortMenu.Click += (s, e) => { FillAndSort_Click<BozoSort<int>>(); };
+            InsertionSortMenu.Click += (s, e) => { FillAndSort_Click<InsertionSort<int>>(); };
+            ShellSortMenu.Click += (s, e) => { FillAndSort_Click<ShellSort<int>>(); };
+            SelectionSortMenu.Click += (s, e) => { FillAndSort_Click<SelectionSort<int>>(); };
             //TODO: Для всех алгоритмов, наверное следует сделать отдельно при нажатии окно с поданными элементами, что получилось, вывод сортировки
-            HeapSort.Click += (s, e) => { FillAndSort_Click<HeapSort<int>>(); };
+            //HeapSortMenu.Click += (s, e) => { FillAndSort_Click<HeapSort<int>>(); };
+            GnomeSortMenu.Click += (s, e) => { FillAndSort_Click<GnomeSort<int>>(); };
 
-            
+
 
             Time.ValueChanged += Time_ValueChanged;
         }
@@ -56,7 +57,8 @@ namespace SortAlgorithms.WPF
 
         private void FillAndSort_Click<T>() where T: AlgorithmBase<int>,new()
         {
-            Sortes = new T(items.Select(x => x.Value).ToList());
+            Sortes = new T();
+            Sortes.SetItems(items.Select(x=>x.Value));
             Sortes.ItemsEdit += Algorithm_ItemsEdit;
             Task.Run(() => Sort_Click());
         }

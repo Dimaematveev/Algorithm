@@ -42,13 +42,14 @@
                 <Button x:Name="Sort" Content="Сортировать">
                     <Button.ContextMenu>
                         <ContextMenu>
-                            <MenuItem Header="Пузырьковая сортировка" Name="BubbleSort"/>
-                            <MenuItem Header="Шейкерная сортировка"  Name="CocktailSort"/>
-                            <MenuItem Header="Сортировка клоуна Бозо"  Name="BozoSort"/>
-                            <MenuItem Header="Сортировка вставками"  Name="InsertionSort"/>
-                            <MenuItem Header="Сортировка Шелла"  Name="ShellSort"/>
-                            <MenuItem Header="Сортировка выбором"  Name="SelectionSort"/>
-                            <MenuItem Header="Сортировка кучей"  Name="HeapSort"/>
+                            <MenuItem Header="Пузырьковая сортировка" Name="BubbleSortMenu"/>
+                            <MenuItem Header="Шейкерная сортировка"  Name="CocktailSortMenu"/>
+                            <!--<MenuItem Header="Сортировка клоуна Бозо"  Name="BozoSortMenu"/>-->
+                            <MenuItem Header="Сортировка вставками"  Name="InsertionSortMenu"/>
+                            <MenuItem Header="Сортировка Шелла"  Name="ShellSortMenu"/>
+                            <MenuItem Header="Сортировка выбором"  Name="SelectionSortMenu"/>
+                            <!--<MenuItem Header="Сортировка кучей"  Name="HeapSortMenu"/>-->
+                            <MenuItem Header="Гномья сортировка"  Name="GnomeSortMenu"/>
                         </ContextMenu>
                     </Button.ContextMenu>
                 </Button>

@@ -21,8 +21,8 @@ namespace SortAlgorithms.BL.Tests
         const string N3 = "Number=141";
         const string N4 = "Number=1258";
         const string N5 = "Number=5821";
-        const string N6 = "Number=11200";
-        const string N7 = "Number=15010";
+        const string N6 = "Number=1200";
+        const string N7 = "Number=1510";
         readonly int[] count = new int[]
         {
             Convert.ToInt32(N1.Substring(7)),
@@ -228,6 +228,28 @@ namespace SortAlgorithms.BL.Tests
         {
             //Arrange
             var sort = new HeapSort<int>();
+            sort.SetItems(Items);
+            //ACT
+            sort.Sort();
+
+            //Assert
+            AssertSorted(sort);
+        }
+
+
+        [TestMethod]
+        [DataTestMethod]
+        [DataRow(N1)]
+        [DataRow(N2)]
+        [DataRow(N3)]
+        [DataRow(N4)]
+        [DataRow(N5)]
+        [DataRow(N6)]
+        [DataRow(N7)]
+        public void GnomeTest(string _1)
+        {
+            //Arrange
+            var sort = new GnomeSort<int>();
             sort.SetItems(Items);
             //ACT
             sort.Sort();
