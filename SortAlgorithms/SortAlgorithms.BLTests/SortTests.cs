@@ -22,7 +22,7 @@ namespace SortAlgorithms.BL.Tests
         const string N4 = "Number=1258";
         const string N5 = "Number=5821";
         const string N6 = "Number=1200";
-        const string N7 = "Number=1510";
+        const string N7 = "Number=10510";
         readonly int[] count = new int[]
         {
             Convert.ToInt32(N1.Substring(7)),
@@ -74,7 +74,7 @@ namespace SortAlgorithms.BL.Tests
         {
             //Arrange
             var sort = new AlgorithmBase<int>();
-            sort.Items.AddRange(Items);
+            sort.SetItems(Items);
             //ACT
             sort.Sort();
 
@@ -95,7 +95,7 @@ namespace SortAlgorithms.BL.Tests
         {
             //Arrange
             var sort = new BubbleSort<int>();
-            sort.Items.AddRange(Items);
+            sort.SetItems(Items);
             //ACT
             sort.Sort();
 
@@ -117,7 +117,7 @@ namespace SortAlgorithms.BL.Tests
         {
             //Arrange
             var sort = new CocktailSort<int>();
-            sort.Items.AddRange(Items);
+            sort.SetItems(Items);
             //ACT
             sort.Sort();
 
@@ -139,7 +139,7 @@ namespace SortAlgorithms.BL.Tests
         {
             //Arrange
             var sort = new InsertionSort<int>();
-            sort.Items.AddRange(Items);
+            sort.SetItems(Items);
             //ACT
             sort.Sort();
 
@@ -160,7 +160,7 @@ namespace SortAlgorithms.BL.Tests
         {
             //Arrange
             var sort = new ShellSort<int>();
-            sort.Items.AddRange(Items);
+            sort.SetItems(Items);
             //ACT
             sort.Sort();
 
@@ -182,7 +182,7 @@ namespace SortAlgorithms.BL.Tests
         {
             //Arrange
             var sort = new SelectionSort<int>();
-            sort.Items.AddRange(Items);
+            sort.SetItems(Items);
             //ACT
             sort.Sort();
 
@@ -206,7 +206,7 @@ namespace SortAlgorithms.BL.Tests
         {
             //Arrange
             var sort = new TreeSort<int>();
-            sort.Items.AddRange(Items);
+            sort.SetItems(Items);
             //ACT
             sort.Sort();
 
@@ -250,6 +250,48 @@ namespace SortAlgorithms.BL.Tests
         {
             //Arrange
             var sort = new GnomeSort<int>();
+            sort.SetItems(Items);
+            //ACT
+            sort.Sort();
+
+            //Assert
+            AssertSorted(sort);
+        }
+
+        [TestMethod]
+        [DataTestMethod]
+        [DataRow(N1)]
+        [DataRow(N2)]
+        [DataRow(N3)]
+        [DataRow(N4)]
+        [DataRow(N5)]
+        [DataRow(N6)]
+        [DataRow(N7)]
+        public void LSDRedixTest(string _1)
+        {
+            //Arrange
+            var sort = new LSDRedixSort();
+            sort.SetItems(Items);
+            //ACT
+            sort.Sort();
+
+            //Assert
+            AssertSorted(sort);
+        }
+
+        [TestMethod]
+        [DataTestMethod]
+        [DataRow(N1)]
+        [DataRow(N2)]
+        [DataRow(N3)]
+        [DataRow(N4)]
+        [DataRow(N5)]
+        [DataRow(N6)]
+        [DataRow(N7)]
+        public void MSDRedixTest(string _1)
+        {
+            //Arrange
+            var sort = new MSDRedixSort();
             sort.SetItems(Items);
             //ACT
             sort.Sort();

@@ -52,7 +52,9 @@
     <Compile Include="DataStructures\Tree.cs" />
     <Compile Include="HeapSort.cs" />
     <Compile Include="InsertionSort.cs" />
+    <Compile Include="MSDRedixSort.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="LSDRedixSort.cs" />
     <Compile Include="SelectionSort.cs" />
     <Compile Include="ShellSort.cs" />
     <Compile Include="TreeSort.cs" />
