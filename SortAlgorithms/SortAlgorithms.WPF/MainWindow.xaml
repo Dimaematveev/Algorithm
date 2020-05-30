@@ -50,7 +50,7 @@
                             <MenuItem Header="Сортировка выбором"  Name="SelectionSortMenu"/>
                             <!--<MenuItem Header="Сортировка кучей"  Name="HeapSortMenu"/>-->
                             <MenuItem Header="Гномья сортировка"  Name="GnomeSortMenu"/>
-                            <MenuItem Header="Поразрядная сортировка"  Name="RedixSortMenu"/>
+                            <!--<MenuItem Header="Поразрядная сортировка"  Name="RedixSortMenu"/>-->
                         </ContextMenu>
                     </Button.ContextMenu>
                 </Button>

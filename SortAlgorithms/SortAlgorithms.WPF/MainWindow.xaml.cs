@@ -43,7 +43,7 @@ namespace SortAlgorithms.WPF
             //TODO: Для всех алгоритмов, наверное следует сделать отдельно при нажатии окно с поданными элементами, что получилось, вывод сортировки
             //HeapSortMenu.Click += (s, e) => { FillAndSort_Click<HeapSort<int>>(); };
             GnomeSortMenu.Click += (s, e) => { FillAndSort_Click<GnomeSort<int>>(); };
-            RedixSortMenu.Click += (s, e) => { FillAndSort_Click<LSDRedixSort>(); };
+            //RedixSortMenu.Click += (s, e) => { FillAndSort_Click<LSDRedixSort>(); };
 
 
 
