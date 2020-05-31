@@ -52,6 +52,7 @@
                             <MenuItem Header="Гномья сортировка"  Name="GnomeSortMenu"/>
                             <!--<MenuItem Header="Поразрядная сортировка"  Name="RedixSortMenu"/>-->
                             <MenuItem Header="Сортировка слиянием"  Name="MergeSortMenu"/>
+                            <MenuItem Header="Быстрая сортировка"  Name="QuickSortMenu"/>
                         </ContextMenu>
                     </Button.ContextMenu>
                 </Button>

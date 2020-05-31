@@ -21,6 +21,10 @@ namespace SortAlgorithms.BL
         }
         protected void Swop(int positionA,int positionB)
         {
+            if (positionA == positionB) 
+            {
+                return;
+            }
             if (positionA < Items.Count && positionB < Items.Count)
             {
                 SetEvent(positionA, positionB, false, Brushes.Orange);

@@ -193,6 +193,7 @@ namespace SortAlgorithms.BL.Tests
             //Assert
             AssertSorted(sort);
         } 
+
         [TestMethod]
         [DataTestMethod]
         [DataRow(N1)]
@@ -206,6 +207,27 @@ namespace SortAlgorithms.BL.Tests
         {
             //Arrange
             var sort = new MergeSort<int>();
+            sort.SetItems(Items);
+            //ACT
+            sort.Sort();
+
+            //Assert
+            AssertSorted(sort);
+        }
+
+        [TestMethod]
+        [DataTestMethod]
+        [DataRow(N1)]
+        [DataRow(N2)]
+        [DataRow(N3)]
+        [DataRow(N4)]
+        [DataRow(N5)]
+        [DataRow(N6)]
+        [DataRow(N7)]
+        public void QuickSortTest(string _1)
+        {
+            //Arrange
+            var sort = new QuickSort<int>();
             sort.SetItems(Items);
             //ACT
             sort.Sort();
