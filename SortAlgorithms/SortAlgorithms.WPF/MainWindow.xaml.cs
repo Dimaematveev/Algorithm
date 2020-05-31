@@ -44,6 +44,7 @@ namespace SortAlgorithms.WPF
             //HeapSortMenu.Click += (s, e) => { FillAndSort_Click<HeapSort<int>>(); };
             GnomeSortMenu.Click += (s, e) => { FillAndSort_Click<GnomeSort<int>>(); };
             //RedixSortMenu.Click += (s, e) => { FillAndSort_Click<LSDRedixSort>(); };
+            MergeSortMenu.Click += (s, e) => { FillAndSort_Click<MergeSort<int>>(); };
 
 
 

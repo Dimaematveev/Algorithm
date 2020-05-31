@@ -51,6 +51,7 @@
                             <!--<MenuItem Header="Сортировка кучей"  Name="HeapSortMenu"/>-->
                             <MenuItem Header="Гномья сортировка"  Name="GnomeSortMenu"/>
                             <!--<MenuItem Header="Поразрядная сортировка"  Name="RedixSortMenu"/>-->
+                            <MenuItem Header="Сортировка слиянием"  Name="MergeSortMenu"/>
                         </ContextMenu>
                     </Button.ContextMenu>
                 </Button>

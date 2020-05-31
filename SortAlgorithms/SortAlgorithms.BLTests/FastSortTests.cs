@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace SortAlgorithms.BL.Tests
 {
     [TestClass()]
-    public class SortTests
+    public class FastSortTests
     {
         readonly Random rnd = new Random();
         readonly List<int> Items = new List<int>();
@@ -21,8 +21,8 @@ namespace SortAlgorithms.BL.Tests
         const string N3 = "Number=141";
         const string N4 = "Number=1258";
         const string N5 = "Number=5821";
-        const string N6 = "Number=1200";
-        const string N7 = "Number=10510";
+        const string N6 = "Number=12000";
+        const string N7 = "Number=105100";
         readonly int[] count = new int[]
         {
             Convert.ToInt32(N1.Substring(7)),
@@ -82,70 +82,8 @@ namespace SortAlgorithms.BL.Tests
             AssertSorted(sort);
         }
 
-        [TestMethod]
-        [DataTestMethod]
-        [DataRow(N1)]
-        [DataRow(N2)]
-        [DataRow(N3)]
-        [DataRow(N4)]
-        [DataRow(N5)]
-        [DataRow(N6)]
-        [DataRow(N7)]
-        public void BubbleTest(string _1)
-        {
-            //Arrange
-            var sort = new BubbleSort<int>();
-            sort.SetItems(Items);
-            //ACT
-            sort.Sort();
 
-            //Assert
-            AssertSorted(sort);
-        }
-
-
-        [TestMethod]
-        [DataTestMethod]
-        [DataRow(N1)]
-        [DataRow(N2)]
-        [DataRow(N3)]
-        [DataRow(N4)]
-        [DataRow(N5)]
-        [DataRow(N6)]
-        [DataRow(N7)]
-        public void CocktailTest(string _1)
-        {
-            //Arrange
-            var sort = new CocktailSort<int>();
-            sort.SetItems(Items);
-            //ACT
-            sort.Sort();
-
-            //Assert
-            AssertSorted(sort);
-        }
-
-
-        [TestMethod]
-        [DataTestMethod]
-        [DataRow(N1)]
-        [DataRow(N2)]
-        [DataRow(N3)]
-        [DataRow(N4)]
-        [DataRow(N5)]
-        [DataRow(N6)]
-        [DataRow(N7)]
-        public void InsectionTest(string _1)
-        {
-            //Arrange
-            var sort = new InsertionSort<int>();
-            sort.SetItems(Items);
-            //ACT
-            sort.Sort();
-
-            //Assert
-            AssertSorted(sort);
-        }
+        
 
         [TestMethod]
         [DataTestMethod]
@@ -167,31 +105,6 @@ namespace SortAlgorithms.BL.Tests
             //Assert
             AssertSorted(sort);
         }
-
-
-        [TestMethod]
-        [DataTestMethod]
-        [DataRow(N1)]
-        [DataRow(N2)]
-        [DataRow(N3)]
-        [DataRow(N4)]
-        [DataRow(N5)]
-        [DataRow(N6)]
-        [DataRow(N7)]
-        public void SelectionTest(string _1)
-        {
-            //Arrange
-            var sort = new SelectionSort<int>();
-            sort.SetItems(Items);
-            //ACT
-            sort.Sort();
-
-            //Assert
-            AssertSorted(sort);
-        }
-
-        
-
 
         [TestMethod]
         [DataTestMethod]
@@ -237,26 +150,7 @@ namespace SortAlgorithms.BL.Tests
         }
 
 
-        [TestMethod]
-        [DataTestMethod]
-        [DataRow(N1)]
-        [DataRow(N2)]
-        [DataRow(N3)]
-        [DataRow(N4)]
-        [DataRow(N5)]
-        [DataRow(N6)]
-        [DataRow(N7)]
-        public void GnomeTest(string _1)
-        {
-            //Arrange
-            var sort = new GnomeSort<int>();
-            sort.SetItems(Items);
-            //ACT
-            sort.Sort();
-
-            //Assert
-            AssertSorted(sort);
-        }
+        
 
         [TestMethod]
         [DataTestMethod]
@@ -292,6 +186,26 @@ namespace SortAlgorithms.BL.Tests
         {
             //Arrange
             var sort = new MSDRedixSort();
+            sort.SetItems(Items);
+            //ACT
+            sort.Sort();
+
+            //Assert
+            AssertSorted(sort);
+        } 
+        [TestMethod]
+        [DataTestMethod]
+        [DataRow(N1)]
+        [DataRow(N2)]
+        [DataRow(N3)]
+        [DataRow(N4)]
+        [DataRow(N5)]
+        [DataRow(N6)]
+        [DataRow(N7)]
+        public void MergeTest(string _1)
+        {
+            //Arrange
+            var sort = new MergeSort<int>();
             sort.SetItems(Items);
             //ACT
             sort.Sort();

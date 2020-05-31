@@ -65,7 +65,21 @@ namespace SortAlgorithms.BL
             
             return b == result;
         }
+        protected bool Compare(T elementA, T elementB, int result)
+        {
+            ComparisonCount++;
+            var b = elementA.CompareTo(elementB);
+            //if (b != result)
+            //{
+            //    SetEvent(elementA, elementB, false, Brushes.Green);
+            //}
+            //else
+            //{
+            //    SetEvent(elementA, elementB, false, Brushes.Red);
+            //}
 
+            return b == result;
+        }
         private void SetEvent(int posA, int posB, bool b, SolidColorBrush color )
         {
             Timer.Stop();
